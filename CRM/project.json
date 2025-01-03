@@ -12,7 +12,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "25.0.157.0",
-  "projectVersion": "1.0.189600655",
+  "projectVersion": "1.0.189609100",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -64,17 +64,17 @@
       },
       {
         "editingStatus": "Publishable",
-        "testCaseId": "69eab42a-f4d5-47b0-a0e3-3091732ebc46",
-        "testCaseType": "TestCase",
-        "executionTemplateInvokeIsolated": false,
-        "fileName": "Account\\UserCanLogOut.xaml"
-      },
-      {
-        "editingStatus": "Publishable",
         "testCaseId": "764627d1-416b-4f32-938f-a4feb23c7d41",
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Customers\\UserCanCreateCustomerWithValidData.xaml"
+      },
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "69eab42a-f4d5-47b0-a0e3-3091732ebc46",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Account\\UserCanLogOut.xaml"
       }
     ],
     "saveToCloud": false
