@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="UserCanCreateNewCustomerWithValidCustomerInfo" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1095,5661" sap2010:WorkflowViewState.IdRef="UserCanCreateNewCustomerWithValidCustomerInfo_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="UserCanCreateNewCustomerWithValidCustomerInfo" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="DesiredBrowser" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1095,5661</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>UserCanCreateNewCustomerWithValidCustomerInfo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -41,6 +49,7 @@
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>UiPath.Testing</x:String>
       <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -92,22 +101,63 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UserCanCreateNewCustomerWithValidCustomerInfo" sap:VirtualizedContainerService.HintSize="512,5596" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UserCanCreateNewCustomerWithValidCustomerInfo" sap:VirtualizedContainerService.HintSize="1262.2,6361" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Opening browser and navigating to landing page&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Open CRM web app" sap:VirtualizedContainerService.HintSize="450,5335" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" ScopeGuid="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Version="V2">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[DesiredBrowser]" sap:VirtualizedContainerService.HintSize="484,858" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Default" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </Switch.Default>
+      <Sequence x:Key="chrome" DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NSetRuntimeBrowser BrowserType="Chrome" DisplayName="Set Runtime Browser" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="NSetRuntimeBrowser_1" Version="V3" />
+      </Sequence>
+      <Sequence x:Key="firefox" DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NSetRuntimeBrowser BrowserType="Firefox" DisplayName="Set Runtime Browser" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="NSetRuntimeBrowser_2" Version="V3" />
+      </Sequence>
+      <Sequence x:Key="edge" DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NSetRuntimeBrowser BrowserType="Edge" DisplayName="Set Runtime Browser" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="NSetRuntimeBrowser_3" Version="V3" />
+      </Sequence>
+    </Switch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Opening browser and navigating to landing page. Desired browser is &quot; + DesiredBrowser]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Open CRM web app" sap:VirtualizedContainerService.HintSize="484,5307" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" ScopeGuid="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Perform create new customer steps" sap:VirtualizedContainerService.HintSize="416,5095" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Perform create new customer steps" sap:VirtualizedContainerService.HintSize="450,5067" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="PageHeading" />
             </Sequence.Variables>
@@ -117,8 +167,8 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Clicking 'Sign In'&quot;]" />
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Sign In'" sap:VirtualizedContainerService.HintSize="354,225" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Version="V3">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Clicking 'Sign In'&quot;]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Sign In'" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://automationplayground.com/crm/" DesignTimeRectangle="1614, 88, 43, 50" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='SignIn' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='SignIn' tag='A' type='' class='nav-link' aaname='Sign In' check:innerText='Sign In' /&gt;" Guid="17a936da-ef01-4308-96b0-d464542658f1" InformativeScreenshot="6c005e9888cd577614077e763088207b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Customer Service' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive" />
               </uix:NClick.Target>
@@ -133,8 +183,8 @@
                 </uix:VerifyExecutionOptions>
               </uix:NClick.VerifyOptions>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Typing email address'&quot;]" />
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Email address'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Text="admin@whatisrpa.com" Version="V3">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Typing email address'&quot;]" />
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Email address'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="416,286" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="9d8bb3fa-d348-406d-95d6-d696dc22cde2" Text="admin@whatisrpa.com" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://automationplayground.com/crm/login.html" DesignTimeRectangle="796, 247, 350, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='email-id' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='email-id' tag='INPUT' type='email' class='form-control' placeholder='Enter email' aaname='' /&gt;" Guid="a20d6a6b-9bc1-4e66-bb4e-56676297988b" InformativeScreenshot="6400d0899567afb636c393c7665dd0fb.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Customer Service - Login' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
